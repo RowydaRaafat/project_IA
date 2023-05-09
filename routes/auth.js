@@ -22,7 +22,7 @@ async (req ,res )=>{
     const user =await query("select * from users where email = ?", [req.body.email])
     if (user.length == 0){
 
-        res.status(404).json({
+     return   res.status(404).json({
 
             errors: [{
                 "msg" :  "email  not exists"
@@ -36,7 +36,7 @@ async (req ,res )=>{
         res.status(200).json(user[0])
     } 
     else{
-        res.status(400).json({
+        return res.status(400).json({
             errors: [{
                 "msg" :  "password  not exists"
             }]
